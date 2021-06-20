@@ -6,6 +6,8 @@ const MongoClient = mongodb.MongoClient;
 const connectionUrl = "mongodb://127.0.0.1:27017";
 const dbFile = "MongoPractice";
 
+
+//Create DB entry 
 MongoClient.connect(
   connectionUrl,
   { useNewUrlParser: true },
@@ -13,6 +15,18 @@ MongoClient.connect(
     if (error) {
       return console.log("Can't connect to db");
     }
-    console.log("Connected!!!!");
+    const db = client.db(dbFile);
+    db.collection("pets").insertOne({
+      name: "Miss Maeby",
+      animal: "cat",
+    }, (error, result) => {
+         if(error){
+              return console.log("unable to add entry")
+         }
+         console.log(result.ops)
+    });
   }
 );
+
+//insertOne is asynchronous so add callback for insertions- this is an example of the READ in CRUD 
+

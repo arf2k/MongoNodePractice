@@ -36,7 +36,7 @@ const dbFile = "MongoPractice";
 
 
 
-///CRUD read operation 
+///CRUD READ operation 
 
 MongoClient.connect(
   connectionUrl,
@@ -47,11 +47,17 @@ MongoClient.connect(
     }
     const db = client.db(dbFile);
 
-    db.collection("pets").findOne({name: "Miss Maeby"}, (error, pet) => {
-      if(error) {
-        return console.log("unable to retrieve")
-      }
-      console.log(pet)
+    // db.collection("pets").findOne({name: "Miss Maeby"}, (error, pet) => {
+    //   if(error) {
+    //     return console.log("unable to retrieve")
+    //   }
+    //   console.log(pet)
+    // })
+
+    db.collection("pets").find({animal: "cat"}).toArray((error, pets) => {
+      console.log(pets)
     })
   }
+
+
 )

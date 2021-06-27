@@ -60,18 +60,33 @@ MongoClient.connect(
 
     //UPDATING using promises (instead of callbacks)
 
-    const updatePromise = 
-    db.collection("pets").updateOne(
-      {
-        _id: new mongodb.ObjectID("60d223cb154e36c5e7aa0429"),
-      },
-      {
-        $set: {
-          name: "Wilson",
-        },
-      }
-    );
-    updatePromise
+    //     const updatePromise = db.collection("pets").updateOne(
+    //       {
+    //         _id: new mongodb.ObjectID("60d223cb154e36c5e7aa0429"),
+    //       },
+    //       {
+    //         $set: {
+    //           name: "Wilson",
+    //         },
+    //       }
+    //     );
+    //     updatePromise
+    //       .then((result) => {
+    //         console.log(result);
+    //         //interested in modified count or matched count
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   }
+    // );
+
+    //DELETE
+
+    db.collection("pets")
+      .deleteMany({
+        animal: "hamster",
+      })
       .then((result) => {
         console.log(result);
       })

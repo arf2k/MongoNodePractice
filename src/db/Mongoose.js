@@ -8,6 +8,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/sample-api", {
 const User = mongoose.model("User", {
   name: {
     type: String,
+    required: true
   },
   age: {
     type: Number,
@@ -15,8 +16,8 @@ const User = mongoose.model("User", {
 });
 
 const me = new User({
-  name: "Xander",
-  age: "turtle",
+//   name: "Xander",
+//   age: "turtle",
 });
 
 me.save()
@@ -26,25 +27,25 @@ me.save()
   .catch((error) => console.log("Error!", error));
 //returns promise
 
-const Task = mongoose.model("Task", {
-  description: {
-    type: String,
-  },
-  completed: {
-    type: Boolean,
-  },
-});
+// const Task = mongoose.model("Task", {
+//   description: {
+//     type: String,
+//   },
+//   completed: {
+//     type: Boolean,
+//   },
+// });
 
-const task = new Task({
-  description: "Buy gooseberries",
-  completed: false,
-});
+// const task = new Task({
+//   description: "Buy gooseberries",
+//   completed: false,
+// });
 
-task
-  .save()
-  .then(() => {
-    console.log(task);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// task
+//   .save()
+//   .then(() => {
+//     console.log(task);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });

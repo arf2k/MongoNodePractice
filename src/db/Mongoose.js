@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator")
 
 mongoose.connect("mongodb://127.0.0.1:27017/sample-api", {
   useNewUrlParser: true,
@@ -13,6 +14,15 @@ const User = mongoose.model("User", {
   age: {
     type: Number,
   },
+  email: {
+    type: String,
+    required: true,
+    validate(value) {
+      if(!validator.isEmail(value)){
+        throw new Error("Email is invalid")
+      }
+    }
+  }
 });
 
 const me = new User({

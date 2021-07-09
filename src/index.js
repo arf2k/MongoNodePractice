@@ -21,9 +21,6 @@ app.post("/pets", (req, res) => {
     });
 });
 
-
-
-
 const User = require("./models/user");
 const Task = require("./models/tasks");
 
@@ -39,13 +36,30 @@ app.post("/users", (req, res) => {
     });
 });
 
-//  app.get("/users", (req, res) => {
-//    User.find({}).then(users) => {
-//      res.send(users)
-//    }).catch((e) => {
+app.get("/users", (req, res) => {
+  User.find({})
+    .then((pets) => {
+      res.send(users);
+    })
+    .catch((e) => {
+      res.status(500).send();
+    });
+});
 
-//    })
-//  })
+app.get("/users/:id", (req, res) => {
+  const _id = req.params.id;
+  console.log(req.params);
+  User.findById(_id)
+    .then((user) => {
+      if (!user) {
+        return res.status(404).send();
+      }
+      res.send(pet);
+    })
+    .catch((e) => {
+      res.status(500).send();
+    });
+});
 
 app.post("/tasks", (req, res) => {
   const task = new Task(req.body);
@@ -58,5 +72,3 @@ app.post("/tasks", (req, res) => {
       res.status(400).send(e);
     });
 });
-
-

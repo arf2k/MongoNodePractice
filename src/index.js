@@ -36,8 +36,8 @@ app.post("/users", (req, res) => {
     });
 });
 
-app.get("/users", (req, res) => {
-  User.find({})
+app.get("/pets", (req, res) => {
+  Pet.find("Petunia")
     .then((pets) => {
       res.send(users);
     })
@@ -60,6 +60,23 @@ app.get("/users/:id", (req, res) => {
       res.status(500).send();
     });
 });
+
+app.get("/pets/:id", (req, res) => {
+  const _id = req.params.id;
+  console.log(req.params);
+  Pet.findById(_id)
+    .then((pet) => {
+      if (!pet) {
+        return res.status(404).send();
+      }
+      res.send(pet);
+    })
+    .catch((e) => {
+      res.status(500).send();
+    });
+});
+
+
 
 app.post("/tasks", (req, res) => {
   const task = new Task(req.body);

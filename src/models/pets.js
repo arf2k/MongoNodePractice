@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const Task = mongoose.model("Task", {
-  description: {
+const Pet = mongoose.model("Pet", {
+  name: {
     type: String,
     required: true,
     trim: true,
   },
-  completed: {
-    type: Boolean,
-    default: false,
+  animal: {
+    type: String,
+    required: true,
+    trim: true
   },
 });
 
-module.exports = Task;
+module.exports = Pet;

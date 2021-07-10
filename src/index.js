@@ -40,7 +40,7 @@ app.post("/users", (req, res) => {
 //   Pet.find("Petunia")
 //     .then((pets) => {
 //       res.send(users);
-//     })
+//     })s
 //     .catch((e) => {
 //       res.status(500).send();
 //     });

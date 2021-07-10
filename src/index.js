@@ -36,15 +36,15 @@ app.post("/users", (req, res) => {
     });
 });
 
-app.get("/pets", (req, res) => {
-  Pet.find("Petunia")
-    .then((pets) => {
-      res.send(users);
-    })
-    .catch((e) => {
-      res.status(500).send();
-    });
-});
+// app.get("/pets", (req, res) => {
+//   Pet.find("Petunia")
+//     .then((pets) => {
+//       res.send(users);
+//     })
+//     .catch((e) => {
+//       res.status(500).send();
+//     });
+// });
 
 app.get("/users/:id", (req, res) => {
   const _id = req.params.id;
@@ -75,8 +75,6 @@ app.get("/pets/:id", (req, res) => {
       res.status(500).send();
     });
 });
-
-
 
 app.post("/tasks", (req, res) => {
   const task = new Task(req.body);
